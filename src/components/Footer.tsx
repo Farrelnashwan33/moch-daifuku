@@ -1,15 +1,15 @@
 import React from 'react';
-import { Phone, MapPin, Clock, Instagram, Heart, Sparkles, MessageCircle } from 'lucide-react';
+import { Phone, MapPin, Clock, Heart, Sparkles, MessageCircle } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-choco-900 text-cream-200 pt-16 pb-12 border-t-4 border-coral-400">
+    <footer className="bg-choco-900 text-cream-200 pt-12 sm:pt-16 pb-10 sm:pb-12 border-t-4 border-coral-400">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-choco-700/60">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 pb-10 sm:pb-12 border-b border-choco-700/60">
           
           {/* Brand Col */}
-          <div className="space-y-4">
+          <div className="space-y-3.5 sm:space-y-4">
             <div className="flex items-center gap-2.5">
               <div className="w-10 h-10 rounded-2xl bg-coral-500 flex items-center justify-center text-white text-xl">
                 🍓
@@ -24,17 +24,17 @@ export default function Footer() {
             </p>
 
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-choco-800 border border-choco-700 text-coral-300 text-xs font-bold">
-              <Sparkles className="w-3.5 h-3.5" />
+              <Sparkles className="w-3.5 h-3.5 shrink-0" />
               <span>100% Halal & Fresh Daily</span>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display font-extrabold text-white text-base mb-4">
+            <h4 className="font-display font-extrabold text-white text-sm sm:text-base mb-3 sm:mb-4">
               Menu Favorit
             </h4>
-            <ul className="space-y-2.5 text-xs text-cream-300">
+            <ul className="space-y-2 text-xs text-cream-300">
               <li>
                 <a href="#katalog-menu" className="hover:text-coral-400 transition-colors">
                   🍓 Mochi Daifuku (Strawberry, Mangga, Anggur)
@@ -47,7 +47,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#katalog-menu" className="hover:text-coral-400 transition-colors">
-                  🧀 Cheesecuit Dessert Box (Keju, Matcha, Oreo)
+                  🧀 Cheesecuit Dessert Box
                 </a>
               </li>
               <li>
@@ -60,10 +60,10 @@ export default function Footer() {
 
           {/* Contact & Hours */}
           <div>
-            <h4 className="font-display font-extrabold text-white text-base mb-4">
+            <h4 className="font-display font-extrabold text-white text-sm sm:text-base mb-3 sm:mb-4">
               Kontak & Pemesanan
             </h4>
-            <div className="space-y-3 text-xs text-cream-300">
+            <div className="space-y-2.5 sm:space-y-3 text-xs text-cream-300">
               <div className="flex items-start gap-2.5">
                 <Clock className="w-4 h-4 text-coral-400 shrink-0 mt-0.5" />
                 <div>
@@ -75,7 +75,7 @@ export default function Footer() {
               <div className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 text-coral-400 shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-bold text-white">WhatsApp Customer Service:</p>
+                  <p className="font-bold text-white">WhatsApp Admin:</p>
                   <a
                     href="https://wa.me/6289648306478"
                     target="_blank"
@@ -98,8 +98,8 @@ export default function Footer() {
           </div>
 
           {/* Social & WhatsApp CTA */}
-          <div className="space-y-4">
-            <h4 className="font-display font-extrabold text-white text-base">
+          <div className="space-y-3 sm:space-y-4">
+            <h4 className="font-display font-extrabold text-white text-sm sm:text-base">
               Chat Langsung
             </h4>
             <p className="text-xs text-cream-300 leading-relaxed">
@@ -119,11 +119,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-choco-300">
+        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-choco-300 text-center sm:text-left">
           <p>
             © {new Date().getFullYear()} <strong className="text-white font-bold">Jajan Yuk</strong>. All Rights Reserved.
           </p>
-          <p className="flex items-center gap-1.5 font-medium">
+          <p className="flex items-center justify-center gap-1.5 font-medium">
             <Heart className="w-3.5 h-3.5 text-coral-400 fill-coral-400" />
             <span>Creative Media Bersama UMKM</span>
           </p>

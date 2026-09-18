@@ -7,7 +7,7 @@ import { useCart } from '@/context/CartContext';
 import { formatRupiah, formatShortPrice } from '@/utils/formatters';
 import { fetchProductRatingSummaryFromDB } from '@/lib/ratingApi';
 import RatingModal from '@/components/RatingModal';
-import { Plus, Minus, ShoppingBag, Star, Check, Sparkles } from 'lucide-react';
+import { Plus, Minus, ShoppingBag, Star, Check } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -62,7 +62,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="bg-white rounded-3xl border-2 border-cream-200/80 shadow-soft hover:shadow-soft-xl hover:border-coral-200 transition-all duration-300 flex flex-col h-full overflow-hidden group">
         
         {/* Product Image Container */}
-        <div className="relative w-full aspect-square bg-cream-100 overflow-hidden">
+        <div className="relative w-full aspect-[4/3] sm:aspect-square bg-cream-100 overflow-hidden">
           <Image
             src={product.image}
             alt={product.name}
@@ -72,28 +72,28 @@ export default function ProductCard({ product }: ProductCardProps) {
           />
 
           {/* Top Badges */}
-          <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none">
+          <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
             {product.badge && (
-              <span className="px-3 py-1 rounded-full bg-coral-500 text-white text-xs font-extrabold shadow-coral backdrop-blur-sm">
+              <span className="px-2.5 sm:px-3 py-1 rounded-full bg-coral-500 text-white text-[11px] sm:text-xs font-extrabold shadow-coral backdrop-blur-sm">
                 {product.badge}
               </span>
             )}
             
-            <div className="w-10 h-10 rounded-full bg-white/95 backdrop-blur-md shadow-md flex items-center justify-center font-display font-black text-coral-600 text-xs border border-coral-100 ml-auto">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/95 backdrop-blur-md shadow-md flex items-center justify-center font-display font-black text-coral-600 text-[11px] sm:text-xs border border-coral-100 ml-auto">
               {formatShortPrice(product.price)}
             </div>
           </div>
 
           {/* Japanese Name Overlay Tag */}
           {product.japaneseName && (
-            <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-choco-950/70 backdrop-blur-sm text-white/90 text-[11px] font-medium">
+            <div className="absolute bottom-2.5 left-2.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-choco-950/70 backdrop-blur-sm text-white/90 text-[10px] sm:text-[11px] font-medium">
               {product.japaneseName}
             </div>
           )}
         </div>
 
         {/* Product Content */}
-        <div className="p-5 sm:p-6 flex flex-col flex-1">
+        <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-1">
           
           {/* Rating (Interactive Star Button) & Tags */}
           <div className="flex items-center justify-between text-xs mb-2">
@@ -101,23 +101,23 @@ export default function ProductCard({ product }: ProductCardProps) {
               type="button"
               onClick={() => setIsRatingModalOpen(true)}
               title="Klik untuk beri ulasan & bintang"
-              className="flex items-center gap-1.5 text-amber-600 font-bold bg-amber-50 hover:bg-amber-100 px-2.5 py-1 rounded-lg border border-amber-200/80 transition-all transform active:scale-95 group/rate cursor-pointer"
+              className="flex items-center gap-1.5 text-amber-600 font-bold bg-amber-50 hover:bg-amber-100 px-2 sm:px-2.5 py-1 rounded-lg border border-amber-200/80 transition-all transform active:scale-95 group/rate cursor-pointer"
             >
               <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400 group-hover/rate:scale-110 transition-transform" />
               <span>{ratingSummary.rating}</span>
-              <span className="text-choco-400 font-normal">({ratingSummary.reviewCount})</span>
+              <span className="text-choco-400 font-normal text-[11px]">({ratingSummary.reviewCount})</span>
               <span className="text-[10px] text-coral-600 font-extrabold pl-1 hidden group-hover/rate:inline-block">
                 + Nilai
               </span>
             </button>
 
-            <span className="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">
+            <span className="text-[10px] sm:text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">
               Fresh Daily
             </span>
           </div>
 
           {/* Title & Price */}
-          <h3 className="font-display font-extrabold text-xl text-choco-900 group-hover:text-coral-600 transition-colors">
+          <h3 className="font-display font-extrabold text-lg sm:text-xl text-choco-900 group-hover:text-coral-600 transition-colors">
             {product.name}
           </h3>
 
@@ -126,8 +126,8 @@ export default function ProductCard({ product }: ProductCardProps) {
           </p>
 
           {/* Price Tag */}
-          <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-xl sm:text-2xl font-display font-black text-coral-600">
+          <div className="mt-2.5 sm:mt-3 flex items-baseline gap-1.5 sm:gap-2">
+            <span className="text-lg sm:text-2xl font-display font-black text-coral-600">
               {formatRupiah(product.price)}
             </span>
             {product.originalPrice && (
@@ -135,20 +135,20 @@ export default function ProductCard({ product }: ProductCardProps) {
                 {formatRupiah(product.originalPrice)}
               </span>
             )}
-            <span className="text-[11px] text-choco-500 font-medium">/ pcs</span>
+            <span className="text-[10px] sm:text-[11px] text-choco-500 font-medium">/ pcs</span>
           </div>
 
           {/* Variant Selection */}
-          <div className="mt-4 pt-4 border-t border-cream-200/80">
-            <div className="flex items-center justify-between text-xs mb-2.5">
-              <span className="font-bold text-choco-800">Pilih Varian Rasa:</span>
-              <span className="font-bold text-coral-600 text-xs">
+          <div className="mt-3.5 sm:mt-4 pt-3.5 sm:pt-4 border-t border-cream-200/80">
+            <div className="flex items-center justify-between text-xs mb-2">
+              <span className="font-bold text-choco-800 text-[11px] sm:text-xs">Pilih Varian:</span>
+              <span className="font-bold text-coral-600 text-[11px] sm:text-xs truncate max-w-[150px] text-right">
                 {selectedVariant.name}
               </span>
             </div>
 
             {/* Variant Pills Grid */}
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
               {product.variants.map((v) => {
                 const isSelected = selectedVariant.id === v.id;
                 return (
@@ -156,7 +156,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                     key={v.id}
                     type="button"
                     onClick={() => setSelectedVariant(v)}
-                    className={`px-3 py-2 rounded-xl text-xs font-bold transition-all text-left flex items-center justify-between border ${
+                    className={`px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold transition-all text-left flex items-center justify-between border ${
                       isSelected
                         ? 'bg-coral-50 border-coral-400 text-coral-700 ring-2 ring-coral-400/20 shadow-sm'
                         : 'bg-white border-cream-300 text-choco-700 hover:border-coral-200 hover:bg-cream-50'
@@ -179,26 +179,26 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
 
           {/* Quantity & Add to Cart Footer */}
-          <div className="mt-5 pt-4 border-t border-cream-200 flex items-center gap-3">
+          <div className="mt-4 sm:mt-5 pt-3 sm:pt-4 border-t border-cream-200 flex items-center gap-2 sm:gap-3">
             {/* Quantity Counter */}
-            <div className="flex items-center rounded-2xl bg-cream-100 border border-cream-300 p-1 shrink-0">
+            <div className="flex items-center rounded-xl sm:rounded-2xl bg-cream-100 border border-cream-300 p-0.5 sm:p-1 shrink-0">
               <button
                 onClick={handleDecrement}
                 disabled={quantity <= 1}
                 aria-label="Kurangi Jumlah"
-                className="w-8 h-8 rounded-xl bg-white text-choco-700 disabled:opacity-40 hover:bg-cream-200 flex items-center justify-center font-bold text-sm shadow-sm transition-all"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-white text-choco-700 disabled:opacity-40 hover:bg-cream-200 flex items-center justify-center font-bold text-xs sm:text-sm shadow-sm transition-all"
               >
-                <Minus className="w-3.5 h-3.5" />
+                <Minus className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               </button>
-              <span className="w-8 text-center text-xs font-black text-choco-900">
+              <span className="w-6 sm:w-8 text-center text-xs font-black text-choco-900">
                 {quantity}
               </span>
               <button
                 onClick={handleIncrement}
                 aria-label="Tambah Jumlah"
-                className="w-8 h-8 rounded-xl bg-white text-choco-700 hover:bg-cream-200 flex items-center justify-center font-bold text-sm shadow-sm transition-all"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-white text-choco-700 hover:bg-cream-200 flex items-center justify-center font-bold text-xs sm:text-sm shadow-sm transition-all"
               >
-                <Plus className="w-3.5 h-3.5" />
+                <Plus className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               </button>
             </div>
 
@@ -206,7 +206,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             <button
               onClick={handleAddToCart}
               disabled={isAdding}
-              className={`flex-1 py-3 px-4 rounded-2xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-soft transform active:scale-95 ${
+              className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 transition-all shadow-soft transform active:scale-95 ${
                 isAdding
                   ? 'bg-emerald-500 text-white'
                   : 'bg-coral-500 hover:bg-coral-600 text-white shadow-coral hover:shadow-lg'
@@ -214,12 +214,12 @@ export default function ProductCard({ product }: ProductCardProps) {
             >
               {isAdding ? (
                 <>
-                  <Check className="w-4 h-4" />
+                  <Check className="w-4 h-4 shrink-0" />
                   <span>Berhasil!</span>
                 </>
               ) : (
                 <>
-                  <ShoppingBag className="w-4 h-4" />
+                  <ShoppingBag className="w-4 h-4 shrink-0" />
                   <span>+ Keranjang</span>
                 </>
               )}

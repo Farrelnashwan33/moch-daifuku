@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Product } from '@/types';
 import { submitProductRatingToDB } from '@/lib/ratingApi';
 import { useCart } from '@/context/CartContext';
-import { X, Star, Sparkles, CheckCircle2, Loader2, Heart } from 'lucide-react';
+import { X, Star, Sparkles, CheckCircle2, Loader2 } from 'lucide-react';
 
 interface RatingModalProps {
   product: Product;
@@ -60,7 +60,7 @@ export default function RatingModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-3.5 sm:p-4">
       {/* Backdrop */}
       <div
         onClick={onClose}
@@ -68,35 +68,35 @@ export default function RatingModal({
       />
 
       {/* Modal Card */}
-      <div className="relative w-full max-w-md bg-white rounded-3xl p-6 sm:p-7 shadow-2xl border border-cream-300 z-10 animate-scaleUp overflow-hidden">
+      <div className="relative w-full max-w-md bg-white rounded-3xl p-5 sm:p-7 shadow-2xl border border-cream-300 z-10 animate-scaleUp overflow-hidden">
         
         {/* Close Button */}
         <button
           onClick={onClose}
           aria-label="Tutup"
-          className="absolute top-4 right-4 p-2 rounded-xl text-choco-400 hover:text-choco-900 hover:bg-cream-100 transition-colors"
+          className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 p-1.5 sm:p-2 rounded-xl text-choco-400 hover:text-choco-900 hover:bg-cream-100 transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
         {isSuccess ? (
-          <div className="py-8 text-center flex flex-col items-center animate-fadeIn">
-            <div className="w-16 h-16 rounded-3xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-3.5 shadow-soft">
-              <CheckCircle2 className="w-9 h-9" />
+          <div className="py-6 sm:py-8 text-center flex flex-col items-center animate-fadeIn">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-3xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-3 shadow-soft">
+              <CheckCircle2 className="w-8 h-8 sm:w-9 sm:h-9" />
             </div>
-            <h3 className="font-display font-black text-xl text-choco-900">
+            <h3 className="font-display font-black text-lg sm:text-xl text-choco-900">
               Terima Kasih, Kak! 🎉
             </h3>
-            <p className="text-xs text-choco-600 mt-1 max-w-xs leading-relaxed">
+            <p className="text-xs text-choco-600 mt-1 max-w-xs leading-relaxed px-2">
               Penilaian {selectedRating} bintangmu untuk <strong>{product.name}</strong> sudah berhasil disimpan ke database.
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
             
             {/* Header / Product summary */}
-            <div className="flex items-center gap-3.5 pb-4 border-b border-cream-200">
-              <div className="relative w-14 h-14 rounded-2xl overflow-hidden bg-cream-100 border border-cream-300 shrink-0">
+            <div className="flex items-center gap-3 pb-3.5 border-b border-cream-200">
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl overflow-hidden bg-cream-100 border border-cream-300 shrink-0">
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -104,26 +104,26 @@ export default function RatingModal({
                   className="object-cover"
                 />
               </div>
-              <div>
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-coral-600 bg-coral-100 px-2 py-0.5 rounded-md">
+              <div className="min-w-0 flex-1">
+                <span className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider text-coral-600 bg-coral-100 px-2 py-0.5 rounded-md">
                   Beri Penilaian ⭐
                 </span>
-                <h3 className="font-display font-black text-base text-choco-900 line-clamp-1 mt-0.5">
+                <h3 className="font-display font-black text-sm sm:text-base text-choco-900 truncate mt-0.5">
                   {product.name}
                 </h3>
-                <p className="text-[11px] text-choco-500 font-medium">
+                <p className="text-[10px] sm:text-[11px] text-choco-500 font-medium truncate">
                   Bagikan pengalaman manismu untuk menu ini!
                 </p>
               </div>
             </div>
 
             {/* Star Rating Interactive Selector */}
-            <div className="text-center py-2 bg-cream-50/70 rounded-2xl border border-cream-200">
-              <p className="text-xs font-bold text-choco-800 mb-2">
+            <div className="text-center py-2 sm:py-2.5 bg-cream-50/70 rounded-2xl border border-cream-200">
+              <p className="text-[11px] sm:text-xs font-bold text-choco-800 mb-1.5">
                 Pilih Jumlah Bintang:
               </p>
 
-              <div className="flex items-center justify-center gap-2">
+              <div className="flex items-center justify-center gap-1 sm:gap-2">
                 {[1, 2, 3, 4, 5].map((star) => {
                   const isFilled = (hoverRating || selectedRating) >= star;
                   return (
@@ -133,10 +133,10 @@ export default function RatingModal({
                       onClick={() => setSelectedRating(star)}
                       onMouseEnter={() => setHoverRating(star)}
                       onMouseLeave={() => setHoverRating(0)}
-                      className="p-1.5 transform hover:scale-125 active:scale-95 transition-all focus:outline-none"
+                      className="p-1 sm:p-1.5 transform hover:scale-125 active:scale-95 transition-all focus:outline-none"
                     >
                       <Star
-                        className={`w-8 h-8 transition-colors ${
+                        className={`w-7 h-7 sm:w-8 sm:h-8 transition-colors ${
                           isFilled
                             ? 'fill-amber-400 text-amber-400 drop-shadow-sm'
                             : 'text-cream-400 fill-cream-100'
@@ -148,7 +148,7 @@ export default function RatingModal({
               </div>
 
               {/* Rating Description Label */}
-              <p className="text-xs font-bold text-coral-600 mt-2 h-4">
+              <p className="text-xs font-bold text-coral-600 mt-1.5 h-4">
                 {RATING_LABELS[hoverRating || selectedRating]}
               </p>
             </div>
@@ -163,7 +163,7 @@ export default function RatingModal({
                 placeholder="Contoh: Kak Dinda / Anonim"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs text-choco-900 bg-cream-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-coral-300 focus:border-coral-400 transition-all"
+                className="w-full px-3.5 py-2 sm:py-2.5 rounded-xl border border-cream-300 text-xs sm:text-sm text-choco-900 bg-cream-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-coral-300 focus:border-coral-400 transition-all"
               />
             </div>
 
@@ -177,7 +177,7 @@ export default function RatingModal({
                 placeholder="Contoh: Mochinya lembut banget dan strawberry-nya manis segar!"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
-                className="w-full px-3.5 py-2 rounded-xl border border-cream-300 text-xs text-choco-900 bg-cream-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-coral-300 focus:border-coral-400 transition-all"
+                className="w-full px-3.5 py-2 rounded-xl border border-cream-300 text-xs sm:text-sm text-choco-900 bg-cream-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-coral-300 focus:border-coral-400 transition-all"
               />
             </div>
 
@@ -185,7 +185,7 @@ export default function RatingModal({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 px-4 rounded-2xl bg-coral-500 hover:bg-coral-600 text-white font-extrabold text-xs sm:text-sm shadow-coral hover:shadow-lg flex items-center justify-center gap-2 transition-all transform active:scale-98 disabled:opacity-70"
+              className="w-full py-2.5 sm:py-3 px-4 rounded-2xl bg-coral-500 hover:bg-coral-600 text-white font-extrabold text-xs sm:text-sm shadow-coral hover:shadow-lg flex items-center justify-center gap-2 transition-all transform active:scale-98 disabled:opacity-70"
             >
               {isSubmitting ? (
                 <>
@@ -194,7 +194,7 @@ export default function RatingModal({
                 </>
               ) : (
                 <>
-                  <Sparkles className="w-4 h-4" />
+                  <Sparkles className="w-4 h-4 shrink-0" />
                   <span>Kirim Penilaian ({selectedRating} ⭐)</span>
                 </>
               )}
