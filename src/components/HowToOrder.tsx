@@ -24,7 +24,7 @@ export default function HowToOrder() {
   ];
 
   return (
-    <section id="cara-pesan" className="py-12 sm:py-16 md:py-24 relative scroll-mt-20">
+    <section id="cara-pesan" className="py-12 sm:py-16 md:py-24 relative scroll-mt-24 sm:scroll-mt-28 md:scroll-mt-32">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}

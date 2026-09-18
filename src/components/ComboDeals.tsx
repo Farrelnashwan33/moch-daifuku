@@ -8,7 +8,7 @@ import { Gift, MessageCircle } from 'lucide-react';
 
 export default function ComboDeals() {
   return (
-    <section id="paket-hemat" className="py-12 sm:py-16 bg-cream-200/50 border-y border-cream-300 relative scroll-mt-20">
+    <section id="paket-hemat" className="py-14 sm:py-20 bg-cream-200/50 border-y border-cream-300 relative scroll-mt-24 sm:scroll-mt-28 md:scroll-mt-32">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
@@ -28,27 +28,31 @@ export default function ComboDeals() {
         </div>
 
         {/* Combos Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
           {COMBOS.map((combo) => (
             <div
               key={combo.id}
-              className="bg-white rounded-3xl p-4.5 sm:p-6 border-2 border-coral-200 shadow-soft-lg hover:shadow-soft-xl transition-all flex flex-col justify-between relative overflow-hidden group"
+              className="bg-white rounded-3xl p-4 sm:p-6 border-2 border-coral-200/80 shadow-soft-lg hover:shadow-soft-xl hover:border-coral-300 transition-all flex flex-col justify-between group"
             >
-              <div className="absolute top-3.5 right-3.5 bg-coral-500 text-white text-[11px] sm:text-xs font-extrabold px-3 py-1 rounded-full shadow-coral z-10">
-                {combo.badge}
-              </div>
-
               <div>
-                <div className="relative w-full h-40 sm:h-48 rounded-2xl overflow-hidden bg-cream-100 mb-4 sm:mb-5">
+                {/* Image Container with Badges neatly positioned INSIDE */}
+                <div className="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden bg-cream-100 mb-4 sm:mb-5">
                   <Image
                     src={combo.image}
                     alt={combo.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, 400px"
+                    sizes="(max-width: 768px) 100vw, 450px"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-choco-950/60 via-transparent to-transparent" />
-                  <span className="absolute bottom-3 left-3 bg-emerald-500 text-white text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-lg">
+                  
+                  {/* Badge top-right inside image */}
+                  <span className="absolute top-3 right-3 bg-coral-500 text-white text-[10px] sm:text-xs font-extrabold px-3 py-1 rounded-full shadow-coral">
+                    {combo.badge}
+                  </span>
+
+                  {/* Discount tag bottom-left inside image */}
+                  <span className="absolute bottom-3 left-3 bg-emerald-500 text-white text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-sm">
                     {combo.discount}
                   </span>
                 </div>

@@ -4,7 +4,7 @@ import { Star, Quote, Heart } from 'lucide-react';
 
 export default function Testimonials() {
   return (
-    <section id="testimoni" className="py-12 sm:py-16 md:py-24 bg-cream-200/40 border-t border-cream-300 relative scroll-mt-20">
+    <section id="testimoni" className="py-12 sm:py-16 md:py-24 bg-cream-200/40 border-t border-cream-300 relative scroll-mt-24 sm:scroll-mt-28 md:scroll-mt-32">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}

@@ -20,7 +20,7 @@ export default function ProductCatalog() {
     : PRODUCTS.filter((p) => p.id === activeTab);
 
   return (
-    <section id="katalog-menu" className="py-12 sm:py-16 md:py-24 relative scroll-mt-20">
+    <section id="katalog-menu" className="py-12 sm:py-16 md:py-24 relative scroll-mt-24 sm:scroll-mt-28 md:scroll-mt-32">
       
       {/* Background decoration */}
       <div className="absolute top-1/3 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-coral-100/40 rounded-full blur-3xl -z-10 pointer-events-none" />
